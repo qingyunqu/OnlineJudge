@@ -8,16 +8,6 @@
 #include <algorithm>
 using namespace std;
 
-int dp[110];
-
 int main(){
-    int n;
-    cin >> n;
-    int array[n];
-    for(int i = 0; i < n; i++){
-        cin >> array[i];
-    }
-    for(int i = 0; i < 110; i++){
-        
-    }
+    
 }
