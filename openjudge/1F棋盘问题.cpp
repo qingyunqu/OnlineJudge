@@ -22,14 +22,13 @@ void backtrace(vector<string>& map, int x, vector<int>& ret){
         cnt++;
         return;
     }
-    for(int i = x / n; i < n; i++){
-        for(int j = x % n; j < n; j++){
-            if(map[i][j] == '#' && !occupied(i, j, ret)){
-                vector<int> result(ret);
-                result.push_back(i * n + j);
-                cout << "result size:" << result.size() << endl;
-                backtrace(map, i * n + j + 1, result);
-            }
+    for(int t = x; t < n * n; t++){
+        int i = t / n;
+        int j = t % n;
+        if(map[i][j] == '#' && !occupied(i, j, ret)){
+            vector<int> result(ret);
+            result.push_back(t);
+            backtrace(map, t + 1, result);
         }
     }
 }
