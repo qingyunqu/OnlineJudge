@@ -14,10 +14,12 @@ using namespace std;
 int dp[110][110];
 
 int deep(int l, int r, int* array, int* sum){
+    if(l == r)
+        return 0;
     if(dp[l][r] != INT_MAX)
         return dp[l][r];
     for(int k = l; k < r; k++){
-        dp[l][r] = min(dp[l][r], deep(l, k, array, sum) + deep(k+1, r, array, sum) + sum[r+1] - sum[l]);
+        dp[l][r] = min(dp[l][r], deep(l, k, array, sum) + deep(k+1, r, array, sum) + sum[r+1] - sum[l]);// sum[r] - sum[l - 1]
     }
     return dp[l][r];
 }
@@ -30,7 +32,7 @@ int main(){
     memset(sum, 0, sizeof(sum));
     for(int i = 0; i < n; i++){
         cin >> array[i];
-        sum[i + 1] += sum[i] + array[i];
+        sum[i + 1] = sum[i] + array[i];
     }
     for(int i = 0; i < 110; i++){
         for(int j = 0; j < 110; j++){
