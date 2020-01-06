@@ -17,7 +17,7 @@ struct node_t{
         w = _w;
     }
     bool operator<(const node_t& n1) const {
-        return w <= n1.w;
+        return w < n1.w;
     }
 };
 
@@ -45,20 +45,20 @@ int main(){
                 cin >> array[i][j];
             }
         }
-        vector<node_t> v;
+        vector<node_t> edges;
         for(int i = 0; i < N; i++){
             for(int j = i + 1; j < N; j++){
-                v.push_back(node_t(i, j, array[i][j]));
+                edges.push_back(node_t(i, j, array[i][j]));
             }
         }
-        sort(v.begin(), v.end());
+        sort(edges.begin(), edges.end());
         int fa[N];
         memset(fa, -1, sizeof(fa));
         int sum = 0;
-        for(auto i : v){
-            if(find(fa, i.a) != find(fa, i.b)){
-                sum += i.w;
-                union_(fa, i.a, i.b);
+        for(auto e : edges){
+            if(find(fa, e.a) != find(fa, e.b)){
+                sum += e.w;
+                union_(fa, e.a, e.b);
             }
         }
         cout << sum << endl;

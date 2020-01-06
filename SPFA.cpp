@@ -34,7 +34,7 @@ bool spfa(int s){
         q.pop();
         inqueue[u] = 0;
         for(int v = 0; v < n; v++){
-            if(dst[u] != INF && dst[u] + mat[u][v] < dst[v]){
+            if(dst[u] + mat[u][v] < dst[v]){ // dst[u] != INF
                 dst[v] = dst[u] + mat[u][v];
                 path[v] = u;
                 if(!inqueue[v]){
