@@ -45,22 +45,27 @@ bool bellmanford(int s){
                 dst[v] = dst[u] + w;
                 path[v] = u;
                 update = true;
-                if(t == n - 1)
-                    return true; // 存在负环
+                //if(t == n - 1)
+                //    return true; // 存在负环
             }
         }
-        if(!update)
-            break;
+        cout << t + 1 << ":" << endl;
+        for(int i = 0; i < n; i++)
+            cout << dst[i] << " ";
+        cout << endl;
+        //if(!update)
+        //    break;
     }
-    for(int i = 0; i < n; i++){
-        cout << dst[i] << " ";
-    }
-    cout << endl;
-    return false;
+    //for(int i = 0; i < n; i++){
+    //    cout << dst[i] << " ";
+    //}
+    //cout << endl;
+    return true;
 }
 
 int main(){
-    cin >> n >> m;
+    //cin >> n >> m;
+    n = 12;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
             if(i == j)
@@ -70,12 +75,36 @@ int main(){
         }
     }
 
-    int u, v, w;
+    /*int u, v, w;
     for(int i = 0; i < m; i++){
         cin >> u >> v >> w;
         mat[u][v] = w;
-    }
-    if(bellmanford(0))
+    }*/
+    mat['a' - 'a']['b' - 'a'] = 19;
+    mat['b' - 'a']['c' - 'a'] = -5;
+    mat['b' - 'a']['e' - 'a'] = 10;
+    mat['c' - 'a']['e' - 'a'] = -3;
+    mat['d' - 'a']['a' - 'a'] = -5;
+    mat['d' - 'a']['g' - 'a'] = -3;
+    mat['e' - 'a']['d' - 'a'] = -7;
+    mat['e' - 'a']['f' - 'a'] = 21;
+    mat['e' - 'a']['h' - 'a'] = -6;
+    mat['f' - 'a']['c' - 'a'] = -7;
+    mat['f' - 'a']['i' - 'a'] = 12;
+    mat['f' - 'a']['l' - 'a'] = 29;
+    mat['g' - 'a']['h' - 'a'] = -1;
+    mat['g' - 'a']['j' - 'a'] = -4;
+    mat['h' - 'a']['b' - 'a'] = -6;
+    mat['h' - 'a']['d' - 'a'] = 18;
+    mat['i' - 'a']['e' - 'a'] = -2;
+    mat['i' - 'a']['h' - 'a'] = -8;
+    mat['j' - 'a']['h' - 'a'] = -3;
+    mat['j' - 'a']['i' - 'a'] = 10;
+    mat['k' - 'a']['a' - 'a'] = 20;
+    mat['k' - 'a']['d' - 'a'] = 21;
+    mat['k' - 'a']['g' - 'a'] = 20;
+    mat['l' - 'a']['c' - 'a'] = -2;
+    if(bellmanford('k' - 'a'))
         cout << "存在负环" << endl;
     else
         cout << "不存在负环" << endl;

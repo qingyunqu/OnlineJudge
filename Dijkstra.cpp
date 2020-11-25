@@ -14,6 +14,7 @@ int path[maxn]; // path[j]记录从s到j最短路上位于j之前的一个顶点
 int n, m;
 
 // 时间复杂度 O(n^2)
+// 可使用优先队列进行优化
 void dijkstra(int s){
     memset(visit, 0, sizeof(visit));
     for(int i = 0; i < n; i++){
